@@ -1,0 +1,160 @@
+.simpson {
+    border: 3px solid darkred;
+    margin-bottom: 15px;
+}
+
+.simpson > * {
+    margin: 10px;
+}
+
+.simpson__name {
+    border: 2px solid silver;
+    text-align: center;
+}
+
+.simpson__sub {
+    display: flex;
+}
+
+.simpson__surname {
+    flex: 0 1 30%;
+    text-align: center;
+    border: 2px solid silver;
+    margin-right: 10px;
+}
+
+.simpson__age {
+    flex: 1 1 auto;
+    text-align: center;
+    border: 2px solid silver;
+}
+
+.simpson__info {
+    padding: 10px;
+    border: 2px solid silver;
+}
+
+.simpson__img {
+    vertical-align: center;
+}
+
+/*=======================================*/
+.course {
+    border: 3px solid darkred;
+}
+
+.course {
+    margin-bottom: 15px;
+}
+
+.course > * {
+    margin: 10px;
+}
+
+.course__title {
+    text-align: center;
+    border: 2px solid silver;
+}
+
+.duration {
+    display: flex;
+    align-items: center;
+}
+
+.duration__month {
+    flex: 0 1 30%;
+    text-align: center;
+    border: 2px solid silver;
+    margin-right: 10px;
+}
+
+.duration__hour {
+    flex: 1 1 auto;
+    text-align: center;
+    border: 2px solid silver;
+}
+
+.course__modules {
+}
+
+/*=======================================*/
+.collapse {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    border: 3px solid darkred;
+    background-color: lightpink;
+    color: darkblue;
+    margin-bottom: 15px;
+}
+
+/*=======================================*/
+.foo {
+    text-align: center;
+    border: 3px solid darkred;
+    margin-bottom: 15px;
+}
+
+.foo > * {
+    margin: 10px;
+}
+
+.foo__title {
+    border: 2px solid silver;
+}
+
+.foo__duration {
+    border: 2px solid silver;
+}
+
+/*=======================================*/
+.item {
+    border: 3px solid darkred;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.item > * {
+    margin: 10px;
+    border: 2px solid silver;
+}
+
+/*=======================================*/
+#button {
+    cursor: pointer;
+    font-size: 20px;
+    color: darkred;
+    width: 150px;
+    height: 75px;
+    background-color: silver;
+    border: 3px solid darkred;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+#button:hover {
+    color: silver;
+    background-color: darkred;
+}
+
+/*=======================================*/
+#f2 {
+    margin-bottom: 15px;
+}
+.table {
+    display: grid;
+    gap: 10px;
+    grid-auto-rows: 100px;
+    font-size: 30px;
+}
+
+.table > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed darkred;
+    padding: 10px;
+}
