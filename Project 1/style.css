@@ -1,0 +1,26 @@
+/*index.html - всі блоки з user - по 2 в рядок. кнопки/посилання розташувати під інформацією про user.*/
+
+body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+.user {
+    border: 2px solid darkred;
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.user:not(:last-child) {
+    margin-bottom: 20px;
+}
+.user > * {
+    flex: 1 0 50%;
+    text-align: center;
+}
+.user a {
+    border-top: 2px solid darkred;
+}

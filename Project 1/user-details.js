@@ -6,18 +6,27 @@
 
 let user = JSON.parse(localStorage.getItem("userName")); // {}
 
+let userInfo = document.createElement("div");
+userInfo.classList.add("user");
+document.body.appendChild(userInfo);
+
 function showUser(user) {
 	for (let key in user) {
-
+		let userElement = document.createElement("div");
+		userElement.classList.add("user-element");
+		let keyDiv = document.createElement("div");
 		let div = document.createElement("div");
 
 		if (typeof user[key] !== "object") {
-			div.innerText = `${key}: ${user[key]}`;
+			keyDiv.innerText = `${key}:`;
+			div.innerText = user[key];
+			userElement.append(keyDiv, div);
 		} else {
+			userElement.classList.remove("user-element");
 			showUser(user[key]);
 		}
 
-		document.body.appendChild(div);
+		userInfo.appendChild(userElement);
 	}
 }
 
@@ -28,21 +37,38 @@ button.innerText = "post of current user";
 document.body.appendChild(button);
 
 let id = user.id;
+
 fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
 .then(response => {
 	return response.json();
 }).then(posts => {
 	button.onclick = function () {
+		let div = document.createElement("div");
+		let div2 = document.createElement("div");
+		div.classList.add("post-title");
+		div2.classList.add("post-title");
+
 		for (const post of posts) {
-			let div = document.createElement("div");
+
 			let postName = document.createElement("a");
 			postName.setAttribute("href", "post-details.html");
 			postName.innerText = post.title;
-			div.appendChild(postName);
+
+			if (div.childNodes.length < 5) {
+				div.appendChild(postName);
+			} else {
+				div2.appendChild(postName);
+			}
+
 			postName.onclick = function () {
 				localStorage.setItem("post", JSON.stringify(post));
+			};
+
+			let postTitle = document.getElementsByClassName("post-title");
+
+			if (postTitle.length === 0) {
+				document.body.append(div, div2);
 			}
-			document.body.appendChild(div);
 		}
 	};
 });
