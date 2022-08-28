@@ -12,164 +12,208 @@
 // 	Пообідати - 1с
 // 	І так далі...
 
-let functions = [
-	function getUp() {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
+function getUp(isGetUp) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (isGetUp) {
 				console.log("Прокидаюся...");
-				resolve("Прокинувся, потім ");
-			});
-		}, 1000);
-	},
-
-	function haveBreakfast(action) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action + "снідаю...");
-				resolve("Поснідав, потім ");
-			}, 300);
+				resolve("Прокинувся");
+			} else {
+				reject("Не прокидаюся, сплю далі...");
+			}
 		});
-	},
+	}, 1000);
+}
 
-	function brushTeeth(action) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action + "чищу зуби...");
-				resolve("Почистив зуби, потім ");
-			}, 100);
-		});
-	},
+function haveBreakfast(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Прокинувся") {
+				console.log(action + ", потім снідаю...");
+				resolve("Поснідав");
+			} else {
+				reject("Не прокинувся, не йду снідати :(");
+			}
+		}, 300);
+	});
+}
 
-	function learnJs(action) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action + "вчу JS...");
-				resolve("Вивчив JS, потім ");
-			}, 2000);
-		});
-	},
+function brushTeeth(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Поснідав") {
+				console.log(action + ", потім чищу зуби...");
+				resolve("Почистив зуби");
+			} else {
+				reject("Не снідав, не йду чистити зуби");
+			}
+		}, 100);
+	});
+}
 
-	function goBike(action4) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action4 + "катаюся на велосипеді...");
-				resolve("Покатався на велосипеді, потім ");
-			}, 1500);
-		});
-	},
+function learnJs(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Почистив зуби") {
+				console.log(action + ", потім вчу JS...");
+				resolve("Вивчив JS");
+			} else {
+				reject("не почистив зуби, не буду вивчити JS");
+			}
+		}, 2000);
+	});
+}
 
-	function haveLunch(action5) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action5 + "обідаю...");
-				resolve("Пообідав, потім ");
-			}, 400);
-		});
-	},
+function goBike(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Вивчив JS") {
+				console.log(action + ", потім катаюся на велосипеді...");
+				resolve("Покатався на велосипеді");
+			} else {
+				reject("Не вивчив JS, не піду кататися на велосипеді");
+			}
 
-	function playComputerGames(action6) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action6 + "граю в комп'ютерні ігри...");
-				resolve("Пограв у комп'ютерні ігри, потім ");
-			}, 2100);
-		});
-	},
 
-	function watchFilm(action7) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action7 + "дивлюся фільм...");
-				resolve("Подивився фільм, потім ");
-			}, 4000);
-		});
-	},
+		}, 1500);
+	});
+}
 
-	function haveDinner(action8) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action8 + "вечеряю...");
-				resolve("Повечеряв, потім ");
-			}, 300);
-		});
-	},
+function haveLunch(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Покатався на велосипеді") {
+				console.log(action + ", потім обідаю...");
+				resolve("Пообідав");
+			} else {
+				reject("Не покатався на велосипеді, не піду обідати");
+			}
+		}, 400);
+	});
+}
 
-	function brushTeethAgain(action9) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action9 + "чищу зуби перед сном");
-				resolve("Почистив зуби перед сном, потім ");
-			}, 150);
-		});
-	},
+function playComputerGames(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Пообідав") {
+				console.log(action + ", потім граю в комп'ютерні ігри...");
+				resolve("Пограв у комп'ютер");
+			} else {
+				reject("Не пообідав, не буду грати у комп'ютерні ігри");
+			}
+		}, 2100);
+	});
+}
 
-	function goToBed(action10) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action10 + "йду спати");
-				resolve("Сплю");
-			}, 150);
-		});
-	},
+function watchFilm(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Пограв у комп'ютер") {
+				console.log(action + ", потім дивлюся фільм...");
+				resolve("Подивився фільм");
+			} else {
+				reject("Не грав у комп'ютерні ігри, не буду дивитися фільм");
+			}
+		}, 4000);
+	});
+}
 
-	function sleep(action11) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				console.log(action11);
-			}, 50);
-		});
-	}
-];
+function haveDinner(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Подивився фільм") {
+				console.log(action + ", потім вечеряю...");
+				resolve("Повечеряв");
+			} else {
+				reject("Не дивився фільм, не піду вечеряти");
+			}
+		}, 300);
+	});
+}
 
-console.log(functions.length);
+function brushTeethAgain(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Повечеряв") {
+				console.log(action + ", потім чищу зуби перед сном...");
+				resolve("Почистив зуби перед сном");
+			} else {
+				reject("Не вечеряв, не буду чистити зуби перед сном");
+			}
+		}, 150);
+	});
+}
 
-Promise.all(functions)
-.then(action => {
-	return functions[0](action);
-}).then(action => {
-	return functions[1](action);
-}).then(action => {
-	return functions[2](action);
-}).then(action => {
-	return functions[3](action);
-}).then(action => {
-	return functions[4](action);
-}).then(action => {
-	return functions[5](action);
-}).then(action => {
-	return functions[6](action);
-}).then(action => {
-	return functions[7](action);
-}).then(action => {
-	return functions[8](action)
-}).then(action => {
-	return functions[9](action)
-}).then(action => {
-	return functions[10](action)
-}).then(action => {
-	return functions[0](action)
-}).then(action => {
-	return functions[0](action)
-})
-.catch(e => {
-	console.warn(e);
+function goToBed(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Почистив зуби перед сном") {
+				console.log(action + ", потім йду спати...");
+				resolve("Сплю...");
+			} else {
+				reject("НЕ почистив зуби перед сном, не піду спати");
+			}
+		}, 150);
+	});
+}
+
+function sleep(action) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (action === "Сплю...") {
+				console.log(action);
+				resolve();
+			} else {
+				reject("Не сплю");
+			}
+		}, 50);
+	});
+}
+
+getUp(true)
+.then(result => {
+	return haveBreakfast(result);
+}).then(result => {
+	return brushTeeth(result);
+}).then(result => {
+	return learnJs(result);
+}).then(result => {
+	return goBike(result);
+}).then(result => {
+	return haveLunch(result);
+}).then(result => {
+	return playComputerGames(result);
+}).then(result => {
+	return watchFilm(result);
+}).then(result => {
+	return haveDinner(result);
+}).then(result => {
+	return brushTeethAgain(result);
+}).then(result => {
+	return goToBed(result);
+}).then(result => {
+	return sleep(result);
+}).catch(error => {
+	console.error("Порушення у розпорядку дня:", error);
 });
-
-
-//=====================================
 
 // async function dayLoop() {
 // 	try {
-// 		let action;
-// 		for (let i = 0; i < functions.length; i++) {
-// 			action = await functions[i](action);
-// 			if (i === functions.length - 1) {
-// 				functions[i](action);
-// 			}
-// 		}
+// 		let result = await getUp(true);
+// 		result = await haveBreakfast(result);
+// 		result = await brushTeeth(result);
+// 		result = await learnJs(result);
+// 		result = await goBike(result);
+// 		result = await haveLunch(result);
+// 		result = await playComputerGames(result);
+// 		result = await watchFilm(result);
+// 		result = await haveDinner(result);
+// 		result = await brushTeethAgain(result);
+// 		result = await goToBed(result);
+// 		await sleep(result);
 // 	} catch (error) {
-// 		console.error("ERROR :(", error);
+// 		console.error("Порушення у розпорядку дня:", error);
 // 	}
 // }
-//
+
 // dayLoop();
