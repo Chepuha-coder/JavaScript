@@ -6,6 +6,7 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
 .user {
     border: 2px solid darkred;
     margin: 0 auto;
@@ -14,13 +15,24 @@ body {
     flex-wrap: wrap;
     align-content: center;
 }
+
+.user > :first-child {
+    outline: 2px solid darkred;;
+}
+
+.user > :last-child {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid darkred;
+}
+
 .user:not(:last-child) {
     margin-bottom: 20px;
 }
+
 .user > * {
     flex: 1 0 50%;
     text-align: center;
-}
-.user a {
-    border-top: 2px solid darkred;
 }
