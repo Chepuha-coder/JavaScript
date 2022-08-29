@@ -30,6 +30,9 @@
 
 .comment > * {
     border: 2px solid darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 10px;
 }
