@@ -28,19 +28,13 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
 }).then(comments => {
 	let div = document.createElement("div");
 	div.classList.add("comment");
-	let div2 = document.createElement("div");
-	div2.classList.add("comment");
 
 	for (const comment of comments) {
 		let commentText = document.createElement("div");
 		commentText.innerText = comment.body;
 
-		if (div.childNodes.length < 4) {
-			div.appendChild(commentText);
-		} else {
-			div2.appendChild(commentText);
-		}
+		div.appendChild(commentText);
 	}
 
-	document.body.append(div, div2);
+	document.body.appendChild(div);
 });

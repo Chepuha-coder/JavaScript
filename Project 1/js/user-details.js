@@ -44,9 +44,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
 }).then(posts => {
 	button.onclick = function () {
 		let div = document.createElement("div");
-		let div2 = document.createElement("div");
 		div.classList.add("post-title");
-		div2.classList.add("post-title");
 
 		for (const post of posts) {
 
@@ -54,11 +52,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
 			postName.setAttribute("href", "post-details.html");
 			postName.innerText = post.title;
 
-			if (div.childNodes.length < 5) {
-				div.appendChild(postName);
-			} else {
-				div2.appendChild(postName);
-			}
+			div.appendChild(postName);
 
 			postName.onclick = function () {
 				localStorage.setItem("post", JSON.stringify(post));
@@ -67,7 +61,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
 			let postTitle = document.getElementsByClassName("post-title");
 
 			if (postTitle.length === 0) {
-				document.body.append(div, div2);
+				document.body.append(div);
 			}
 		}
 	};

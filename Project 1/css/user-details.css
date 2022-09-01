@@ -32,14 +32,25 @@ button {
     padding: 5px;
 }
 
+button:not(:last-child) {
+    margin-bottom: 10px;
+}
+
 .post-title {
-    margin-top: 30px;
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post-title > * {
+    flex: 1 1 19%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3px;
 }
 
 .post-title a {
     background-color: greenyellow;
-}
-
-.post-title a:not(:last-child) {
-    margin-right: 10px;
 }
